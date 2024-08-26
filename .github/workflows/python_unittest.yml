@@ -15,6 +15,11 @@ on:
         required: false
         type: string
         default: 'test_*.py'
+      testspath:
+          required: false
+          type: string
+          default: ./tests
+  
 
 jobs:
   test:
@@ -26,5 +31,5 @@ jobs:
           pip3 install ${{ inputs.requirements }}
           pip3 install coverage
           export PYTHONPATH="$PYTHONPATH:${{ inputs.pythonpath }}"
-          coverage run -m unittest discover -s ./tests -p ${{ inputs.discover-syntax }}
+          coverage run -m unittest discover -s ${{ inputs.testspath}} -p ${{ inputs.discover-syntax }}
           coverage report -m
