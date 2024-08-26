@@ -1,0 +1,24 @@
+name: Python Unittest
+
+on:
+  workflow_call:
+    inputs:
+      requirements:
+        required: false
+        type: string
+        default: -r requirements.txt
+      pythonpath:
+        required: false
+        type: string
+        default: src
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: unit-tests
+        run: |
+          pip3 install ${{ inputs.requirements }}
+          export PYTHONPATH="$PYTHONPATH:${{ inputs.pythonpath }}"
+          python3 -m unittest discover -s ./tests -p '*_test.py'
