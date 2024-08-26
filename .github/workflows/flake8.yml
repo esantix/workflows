@@ -1,4 +1,4 @@
-name: Flake8 check
+name: Flake8 Check
 
 on:
   workflow_call:
