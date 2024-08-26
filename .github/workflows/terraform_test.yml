@@ -1,0 +1,21 @@
+name: Terraform Validate
+
+on:
+  workflow_call:
+    inputs:
+      terraform-wdir:
+        required: false
+        type: string
+        default: terraform/
+
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: validate
+        run: |
+          sudo apt-get install -y terraform
+          cd ${{ inputs.terraform-wdir }}
+          terraform validate
