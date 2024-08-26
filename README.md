@@ -15,8 +15,8 @@ on:
 
 jobs:
   flake8:
-    uses: esantix/workflows/.github/workflows/pytho_flake8.yml@main
+    uses: esantix/workflows/.github/workflows/python_flake8.yml@main
     with:
-        ignore-codes: E501,E502
+      ignore-codes: E501,E502
 
 ```
